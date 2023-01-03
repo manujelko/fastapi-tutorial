@@ -5,16 +5,17 @@ app = FastAPI()
 
 @app.get("/items/")
 async def read_items(
-        q: str | None = Query(
-            default=None,
-            alias="item-query",
-            title="Query string",
-            description="Query string for...",
-            min_length=3,
-            max_length=50,
-            regex="^fixedquery$",
-            deprecated=True,
-        )
+    q: str
+    | None = Query(
+        default=None,
+        alias="item-query",
+        title="Query string",
+        description="Query string for...",
+        min_length=3,
+        max_length=50,
+        regex="^fixedquery$",
+        deprecated=True,
+    )
 ):
     results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
     if q:
